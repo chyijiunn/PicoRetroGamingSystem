@@ -10,15 +10,15 @@ class PicoGame(SSD1306_I2C):
     def __init__(self):
         self.SCREEN_WIDTH = 128
         self.SCREEN_HEIGHT = 64
-        self.__up = Pin(2, Pin.IN, Pin.PULL_UP)
-        self.__down = Pin(3, Pin.IN, Pin.PULL_UP)
-        self.__left = Pin(4, Pin.IN, Pin.PULL_UP)
-        self.__right = Pin(5, Pin.IN, Pin.PULL_UP)
-        self.__button_A = Pin(6, Pin.IN, Pin.PULL_UP)
-        self.__button_B = Pin(7, Pin.IN, Pin.PULL_UP)
-        self.__buzzer = PWM(Pin(18))
+        self.__up = Pin(1, Pin.IN, Pin.PULL_UP)
+        self.__down = Pin(0, Pin.IN, Pin.PULL_UP)
+        self.__left = Pin(2, Pin.IN, Pin.PULL_UP)
+        self.__right = Pin(3, Pin.IN, Pin.PULL_UP)
+        self.__button_A = Pin(4, Pin.IN, Pin.PULL_UP)
+        self.__button_B = Pin(5, Pin.IN, Pin.PULL_UP)
+        self.__buzzer = PWM(Pin(12))
         
-        self.__i2c = I2C(1, sda=Pin(14), scl=Pin(15), freq=400000)
+        self.__i2c = I2C(0, sda=Pin(20), scl=Pin(21), freq=400000)
         super().__init__(self.SCREEN_WIDTH, self.SCREEN_HEIGHT, self.__i2c)
         
         self.__fb=[] # Array of FrameBuffer objects for sprites

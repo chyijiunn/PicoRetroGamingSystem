@@ -15,20 +15,20 @@ def pico_pong_main():
     PADDLE_Y = SCREEN_HEIGHT-2*PADDLE_HEIGHT # Vertical position of the paddle
 
     # Buttons
-    # Left button connected to GP4
-    # Right button connected to GP5
-    up = Pin(2, Pin.IN, Pin.PULL_UP)
-    down = Pin(3, Pin.IN, Pin.PULL_UP)
-    left = Pin(4, Pin.IN, Pin.PULL_UP)
-    right = Pin(5, Pin.IN, Pin.PULL_UP)
-    button1 = Pin(6, Pin.IN, Pin.PULL_UP)
-    button2 = Pin(7, Pin.IN, Pin.PULL_UP)
+    # Left button connected to GP2
+    # Right button connected to GP3
+    up = Pin(1, Pin.IN, Pin.PULL_UP)
+    down = Pin(0, Pin.IN, Pin.PULL_UP)
+    left = Pin(2, Pin.IN, Pin.PULL_UP)
+    right = Pin(3, Pin.IN, Pin.PULL_UP)
+    button1 = Pin(4, Pin.IN, Pin.PULL_UP)
+    button2 = Pin(5, Pin.IN, Pin.PULL_UP)
 
     # Buzzer connected to GP18
     buzzer = PWM(Pin(18))
 
-    # OLED Screen connected to GP14 (SDA) and GP15 (SCL)
-    i2c = I2C(1, sda = Pin(14), scl = Pin(15), freq = 400000)
+    # OLED Screen connected to GP20 (SDA) and GP21 (SCL)
+    i2c = I2C(0, sda = Pin(20), scl = Pin(21), freq = 400000)
     oled = SSD1306_I2C(SCREEN_WIDTH, SCREEN_HEIGHT, i2c)
 
     # variables

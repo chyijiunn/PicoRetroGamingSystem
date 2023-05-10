@@ -10,21 +10,21 @@ if __name__ == "__main__":
     SCREEN_HEIGHT=64
     
     # list of games
-    GAMELIST=["Pong","Snake","Space Invaders"]
+    GAMELIST=["Pong","Snake","Space Invaders",'Conway','MazeRun']
 
-    # Buttons connected to GP2 to GP7
-    up = Pin(2, Pin.IN, Pin.PULL_UP)
-    down = Pin(3, Pin.IN, Pin.PULL_UP)
-    left = Pin(4, Pin.IN, Pin.PULL_UP)
-    right = Pin(5, Pin.IN, Pin.PULL_UP)
-    button1 = Pin(6, Pin.IN, Pin.PULL_UP)
-    button2 = Pin(7, Pin.IN, Pin.PULL_UP)
+    # Buttons connected to GP0 to GP5
+    up = Pin(1, Pin.IN, Pin.PULL_UP)
+    down = Pin(0, Pin.IN, Pin.PULL_UP)
+    left = Pin(2, Pin.IN, Pin.PULL_UP)
+    right = Pin(3, Pin.IN, Pin.PULL_UP)
+    button1 = Pin(4, Pin.IN, Pin.PULL_UP)
+    button2 = Pin(5, Pin.IN, Pin.PULL_UP)
     
-    # Buzzer connected to GP18
-    buzzer = PWM(Pin(18))
+    # Buzzer connected to GP12
+    buzzer = PWM(Pin(12))
     
-    # OLED Screen connected to GP14 (SDA) and GP15 (SCL)
-    i2c = machine.I2C(1, sda = Pin(14), scl = Pin(15), freq = 400000)
+    # OLED Screen connected to GP20 (SDA) and GP21 (SCL)
+    i2c = machine.I2C(0, sda = Pin(20), scl = Pin(21), freq = 400000)
     oled = SSD1306_I2C(SCREEN_WIDTH, SCREEN_HEIGHT, i2c)
 
     current = 0
@@ -78,5 +78,10 @@ if __name__ == "__main__":
             elif game_selected==2:
                 from PicoInvaders import *
                 pico_invaders_main()
-                
+            elif game_selected==3:
+                from Conway import *
+                conway_main()
+            elif game_selected==4:
+                from MazeRun import *
+                mazerun_main()
         game_selected=-1
